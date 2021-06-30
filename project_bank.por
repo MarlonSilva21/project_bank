@@ -5,6 +5,10 @@ programa
 	{
 		cadeia contaPoupanca, contaCorrente, contaEspecial, contaEmpresarial, contaEstudantil, Sair
 		inteiro conta
+		real saldo = 0.00, valorMovimentado
+		caracter opcaoOperacao
+		
+		
 
 		cabecalho()
 
@@ -32,7 +36,19 @@ programa
 		senao se(conta == 4) {
 			cabecalho()
 			escreva("\nCONTA EMPRESARIAL\n")
-			escreva("")
+			escreva("Saldo atual: R$", saldo, "\n")
+			escreva("Movimento - D - Débito ou C - Crédito: \n")
+			leia(opcaoOperacao)
+			se(opcaoOperacao == 'D' ou opcaoOperacao == 'd'){
+				escreva("\nValor movimento: R$")
+				leia(valorMovimentado)
+				saldo -= valorMovimentado
+			}
+			senao se(opcaoOperacao == 'C' ou opcaoOperacao == 'c'){
+				escreva("\nValor movimento: R$")
+				leia(valorMovimentado)
+				saldo += valorMovimentado
+			}
 		}
 		senao se(conta == 5){
 			cabecalho()
@@ -49,10 +65,11 @@ programa
 		
 	}
 	funcao cabecalho () {
-		escreva("BANCO G4\n")
+		escreva("BANZAI BANK\n")
 		escreva("Banco Honesto\n")
 	}
-		
+	
+	
 	
 }
 
@@ -62,7 +79,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 567; 
+ * @POSICAO-CURSOR = 1201; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
