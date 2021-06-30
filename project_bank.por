@@ -3,8 +3,11 @@ programa
 	
 	funcao inicio()
 	{
-		cadeia contaPoupanca, contaCorrente, contaEspecial, contaEmpresarial, contaEstudantil, Sair
-		inteiro conta
+		inteiro conta, contadorTalao
+		real saldo = 0.0, valorMovimentado
+		caracter operacaoConta
+		
+		
 
 		cabecalho()
 
@@ -22,7 +25,23 @@ programa
 		senao se(conta == 2){
 			cabecalho()
 			escreva("\nCONTA CORRENTE\n")
-			escreva("")
+			escreva("Saldo Atual: R$ ", saldo /*informação específica*/, "\n")
+			escreva("Movimento - D - Débito ou C-Crédito:")
+			leia(operacaoConta)
+			escreva("\nValor movimentado: R$")
+			leia(valorMovimentado)
+
+			se(operacaoConta == 'd' ou operacaoConta == 'D'){			
+				saldo -= valorMovimentado
+			}   
+			senao se(operacaoConta == 'c' ou operacaoConta == 'C'){
+				saldo += valorMovimentado
+			}
+
+			escreva(saldo)
+			
+			escreva("Continuar S/N:")
+			
 		}
 		senao se(conta == 3){
 			cabecalho()
@@ -49,10 +68,12 @@ programa
 		
 	}
 	funcao cabecalho () {
-		escreva("BANCO G4\n")
-		escreva("Banco Honesto\n")
-	}
+		escreva("BANZAI BANK - G4\n")
+		escreva("O banco é duradouro, seu dinheiro não.\n")
 		
+		
+	}
+	
 	
 }
 
@@ -62,7 +83,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 567; 
+ * @POSICAO-CURSOR = 544; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
