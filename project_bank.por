@@ -6,7 +6,7 @@ programa
 		cadeia contaPoupanca, contaCorrente, contaEspecial, contaEmpresarial, contaEstudantil, Sair
 		inteiro conta
 		real saldo = 0.00, valorMovimentado
-		caracter opcaoOperacao
+		caracter opcaoOperacao, continua
 		
 		
 
@@ -35,34 +35,47 @@ programa
 		}
 		senao se(conta == 4) {
 			cabecalho()
-			escreva("\nCONTA EMPRESARIAL\n")
-			escreva("Saldo atual: R$", saldo, "\n")
-			escreva("Movimento - D - Débito ou C - Crédito: \n")
-			leia(opcaoOperacao)
-			se(opcaoOperacao == 'D' ou opcaoOperacao == 'd'){
-				escreva("\nValor movimento: R$")
-				leia(valorMovimentado)
-				saldo -= valorMovimentado
-			}
-			senao se(opcaoOperacao == 'C' ou opcaoOperacao == 'c'){
-				escreva("\nValor movimento: R$")
-				leia(valorMovimentado)
-				saldo += valorMovimentado
+			para(inteiro i = 0; i < 10; i++){
+				escreva("\nCONTA EMPRESARIAL\n")
+				escreva("Saldo atual: R$", saldo, "\n")
+				escreva("Movimento - D - Débito ou C - Crédito: \n")
+				leia(opcaoOperacao)
+				se(opcaoOperacao == 'D' ou opcaoOperacao == 'd'){
+					escreva("\nValor movimento: R$")
+					leia(valorMovimentado)
+					saldo -= valorMovimentado
+					escreva(saldo)
+				}
+				senao se(opcaoOperacao == 'C' ou opcaoOperacao == 'c'){
+					escreva("\nValor movimento: R$")
+					leia(valorMovimentado)
+					saldo += valorMovimentado
+					escreva(saldo)
+				}
+				escreva("CONTINUAR S/N: ")
+				leia(continua)
+				se(){
+					
+				}
 			}
 		}
+				
+			
 		senao se(conta == 5){
-			cabecalho()
-			escreva("\nCONTA ESTUDANTIL\n")
-			escreva("")
+				cabecalho()
+				escreva("\nCONTA ESTUDANTIL\n")
+				escreva("")
 		}
 		senao se(conta == 6){
-			cabecalho()
-			escreva("\nSAIR\n")
-			escreva("")
+				cabecalho()
+				escreva("\nSAIR\n")
+				escreva("")
 		}
+			
 		
 
 		
+	
 	}
 	funcao cabecalho () {
 		escreva("BANZAI BANK\n")
@@ -79,7 +92,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 1201; 
+ * @POSICAO-CURSOR = 1373; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
