@@ -1,60 +1,78 @@
 programa
 {
+
+	
+	caracter voltar
+	inteiro numeroConta 
+	real saldo = 0.00, limite = 1000.00, total = saldo + limite, saque, deposito, diferenca
 	
 	funcao inicio()
 	{
-		cadeia contaPoupanca, contaCorrente, contaEspecial, contaEmpresarial, contaEstudantil, Sair
-		inteiro conta
+		menu()
 
-		cabecalho()
+		operacoes()
+	}
 
-		escreva("\n1 - CONTA POUPANÇA \n2 - CONTA CORRENTE \n3 - CONTA ESPECIAL \n4 - CONTA EMPRESARIAL \n5 - CONTA ESTUDANTIL \n6 - SAIR\n")
-		escreva("\nDigite o código da opção: ")
-		leia(conta)
-
-		limpa()
-
-		se(conta == 1){
-			cabecalho()
-			escreva("\nCONTA POUPANÇA\n")
-			escreva("")
-		}
-		senao se(conta == 2){
-			cabecalho()
-			escreva("\nCONTA CORRENTE\n")
-			escreva("")
-		}
-		senao se(conta == 3){
-			cabecalho()
-			escreva("\nCONTA ESPECIAL\n")
-			escreva("")
-		}
-		senao se(conta == 4) {
-			cabecalho()
-			escreva("\nCONTA EMPRESARIAL\n")
-			escreva("")
-		}
-		senao se(conta == 5){
-			cabecalho()
-			escreva("\nCONTA ESTUDANTIL\n")
-			escreva("")
-		}
-		senao se(conta == 6){
-			cabecalho()
-			escreva("\nSAIR\n")
-			escreva("")
-		}
+	funcao menu(){
 		
+		escreva("\n1 - CONTA POUPANÇA")
+		escreva("\n2 - CONTA CORRENTE")
+		escreva("\n3 - CONTA ESPECIAL")
+		escreva("\n4 - CONTA EMPRESARIAL")
+		escreva("\n5 - CONTA ESTUDANTIL")
 
+		escreva("\n\nSelecione seu tipo de conta: ")
 		
 	}
-	funcao cabecalho () {
-		escreva("BANCO G4\n")
-		escreva("Banco Honesto\n")
-	}
+
+	funcao operacoes(){
 		
-	
+		menu()
+		leia(numeroConta)
+		
+		escolha(numeroConta){
+			caso 1:
+				contaPoupanca()
+				pare
+			caso 2:
+				contaCorrente()
+				pare
+			caso 3:
+				contaEspecial()
+				pare
+			caso 4:
+				contaEmpresarial()
+				pare
+			caso 5:
+				contaEstudantil()
+				pare
+			caso contrario:
+
+			escreva("\n***************\n")
+			escreva("Opcao inválida\n")
+			escreva("***************\n")
+			operacoes()
+			
+		}
+	}
+
+	funcao contaPoupanca(){
+		
+	}
+	funcao contaCorrente(){
+		
+	}
+	funcao contaEspecial(){
+		
+	}
+	funcao contaEmpresarial(){
+		
+	}
+	funcao contaEstudantil(){
+		
+	}
 }
+
 
 
 /* $$$ Portugol Studio $$$ 
@@ -62,7 +80,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 567; 
+ * @POSICAO-CURSOR = 1032; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
