@@ -5,7 +5,7 @@ programa
 	{
 		cadeia contaPoupanca, contaCorrente, contaEspecial, contaEmpresarial, contaEstudantil, Sair
 		inteiro conta
-		real saldo = 0.00, valorMovimentado
+		real saldo = 0.00, valorMovimentado, creditoEspecial = 10000.0
 		caracter opcaoOperacao, continua
 		
 		
@@ -38,6 +38,7 @@ programa
 			para(inteiro i = 0; i < 10; i++){
 				escreva("\nCONTA EMPRESARIAL\n")
 				escreva("Saldo atual: R$", saldo, "\n")
+				escreva("Crédito especial disponível: R$", creditoEspecial, "\n")
 				escreva("Movimento - D - Débito ou C - Crédito: \n")
 				leia(opcaoOperacao)
 				se(opcaoOperacao == 'D' ou opcaoOperacao == 'd'){
@@ -50,15 +51,23 @@ programa
 					escreva("\nValor movimento: R$")
 					leia(valorMovimentado)
 					saldo += valorMovimentado
+					creditoEspecial -= saldo
 					escreva(saldo)
 				}
-				escreva("CONTINUAR S/N: ")
+				
+				/*escreva("CONTINUAR S/N: ")
 				leia(continua)
-				se(){
+					se(continua == 'n' ou continua == 'N'){
+						pare
+					}
+					senao se(continua != 's' ou continua != 'S'){
+						escreva("Opção inválida. Deseja continuar? S/N")
+					}*/
+				
 					
-				}
 			}
 		}
+		
 				
 			
 		senao se(conta == 5){
@@ -92,7 +101,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 1373; 
+ * @POSICAO-CURSOR = 1353; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
