@@ -49,16 +49,20 @@ programa
 					leia(valorMovimentado)
 					saldo -= valorMovimentado
 					escreva(saldo)
+					se(saldo == 0.00){
+						
+					}
 				}
 				senao se(opcaoOperacao == 'C' ou opcaoOperacao == 'c'){
 					escreva("\nValor movimento: R$")
 					leia(valorMovimentado)
 					saldo += valorMovimentado
-					saldoAtual = saldo
 					creditoEspecial -= valorMovimentado
 					escreva("\n", saldo, "\n")
 					
-					se(creditoEspecial < 0){
+					se(creditoEspecial == 0){
+						escreva("Saldo Especial Indisponível")
+						
 					pare
 					}
 				
@@ -110,7 +114,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 1514; 
+ * @POSICAO-CURSOR = 1487; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
