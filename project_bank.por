@@ -17,6 +17,7 @@ programa
 		operacoes()
 	}
 
+	//funcao para o painel do menu
 	funcao menu(){
 		escreva(nomeBanco)
 		escreva(slogan)
@@ -29,13 +30,16 @@ programa
 		escreva("\n6 - SAIR")
 
 		escreva("\n\nDIGITE O CÓDIGO DA OPÇÃO SELECIONADA: ")
+
+		leia(numeroConta)
 		
 	}
 
+	// funcao com as opções de conta
 	funcao operacoes(){
 		
 		
-		leia(numeroConta)
+		//leia(numeroConta)
 		
 		escolha(numeroConta){
 			caso 1:
@@ -72,23 +76,33 @@ programa
 		}
 	}
 
+	//funcao conta poupança
 	funcao contaPoupanca(){
 		escreva("conta poupanca")
 	}
+
+	//funcao conta corrente
 	funcao contaCorrente(){
 		escreva("conta corrente")
 	}
+
+	//funcao conta especial
 	funcao contaEspecial(){
 		escreva("conta especial")
 	}
+
+	//funcao conta empresarial
 	funcao contaEmpresarial(){
 		escreva("conta empresarial")
 	}
+
+	//funcao conta estudantil
 	funcao contaEstudantil(){
 		
 		tela2()
 	}
-
+	
+	//funcao pra conferir se vai ser debito ou crédito
 	funcao debitoCredito(){
 		escreva("\nMOVIMENTO --- 1 - debito | 2 - crédito: ")
 		leia(operacao)
@@ -102,17 +116,36 @@ programa
 	}
 	//funcao para debito
 	funcao debito(){
+		faca{
 		escreva("Valor a ser debitado : R$ ")
 		leia(valorMovimentado)
 		saldo = saldo - valorMovimentado
+
+		escreva("Deseja fazer outro débito? [S/N] : ")
+		leia(voltar)
+
+		limpa()
+		}
+		enquanto(voltar != 'N')
+			inicio()
+		
 	}
 
 	//funcao para credito
 	funcao credito(){
+		faca{
 		escreva("Valor a ser creditado : R$ ")
 		leia(valorMovimentado)
 
 		saldo = saldo + valorMovimentado
+
+		escreva("Deseja fazer outro crédito? [S/N] : ")
+		leia(voltar)
+
+		limpa()
+		}
+		enquanto(voltar != 'n' e voltar != 'N')
+		inicio()
 
 	}
 	
@@ -134,7 +167,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 2012; 
+ * @POSICAO-CURSOR = 2263; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
