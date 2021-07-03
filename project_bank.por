@@ -1,60 +1,172 @@
 programa
 {
+
+	
+	caracter voltar
+	inteiro numeroConta, operacao 
+	real saldo = 0.00, limiteEstudantil = 5000.00, total = saldo + limiteEstudantil, saque, deposito, diferenca
+	real valorMovimentado
+	cadeia nomeBanco = "BANCO G-4\n"
+	cadeia slogan = "A ELITE DO BRASILEIRÃO\n"
+	cadeia tipoConta
 	
 	funcao inicio()
 	{
-		cadeia contaPoupanca, contaCorrente, contaEspecial, contaEmpresarial, contaEstudantil, Sair
-		inteiro conta
+		menu()
+		operacoes()
+	}
 
-		cabecalho()
+	//funcao para o painel do menu
+	funcao menu(){
+		escreva(nomeBanco)
+		escreva(slogan)
+		
+		escreva("\n1 - CONTA POUPANÇA")
+		escreva("\n2 - CONTA CORRENTE")
+		escreva("\n3 - CONTA ESPECIAL")
+		escreva("\n4 - CONTA EMPRESARIAL")
+		escreva("\n5 - CONTA ESTUDANTIL")
+		escreva("\n6 - SAIR")
 
-		escreva("\n1 - CONTA POUPANÇA \n2 - CONTA CORRENTE \n3 - CONTA ESPECIAL \n4 - CONTA EMPRESARIAL \n5 - CONTA ESTUDANTIL \n6 - SAIR\n")
-		escreva("\nDigite o código da opção: ")
-		leia(conta)
+		escreva("\n\nDIGITE O CÓDIGO DA OPÇÃO SELECIONADA: ")
+
+		leia(numeroConta)
+		
+	}
+
+	// funcao com as opções de conta
+	funcao operacoes(){
+		
+		
+		//leia(numeroConta)
+		
+		escolha(numeroConta){
+			caso 1:
+				tipoConta = "POUPANÇA"
+				contaPoupanca()
+				pare
+			caso 2:
+				tipoConta = "CORRENTE"
+				contaCorrente()
+				pare
+			caso 3:
+				tipoConta = "ESPECIAL"
+				contaEspecial()
+				pare
+			caso 4:
+				tipoConta = "EMPRESARIAL"
+				contaEmpresarial()
+				pare
+			caso 5:
+				limpa()
+				tipoConta = "ESTUDANTIL"
+				contaEstudantil()
+				pare
+			caso 6:
+				pare
+			caso contrario:
+
+			escreva("\n***************\n")
+			escreva("Opcao inválida\n")
+			escreva("***************\n")
+			menu()
+			operacoes()
+			
+		}
+	}
+
+	//funcao conta poupança
+	funcao contaPoupanca(){
+		escreva("conta poupanca")
+	}
+
+	//funcao conta corrente
+	funcao contaCorrente(){
+		escreva("conta corrente")
+	}
+
+	//funcao conta especial
+	funcao contaEspecial(){
+		escreva("conta especial")
+	}
+
+	//funcao conta empresarial
+	funcao contaEmpresarial(){
+		escreva("conta empresarial")
+	}
+
+	//funcao conta estudantil
+	funcao contaEstudantil(){
+		
+		tela2()
+	}
+	
+	//funcao pra conferir se vai ser debito ou crédito
+	funcao debitoCredito(){
+		escreva("\nMOVIMENTO --- 1 - debito | 2 - crédito: ")
+		leia(operacao)
+
+		se(operacao == 1){
+			debito()
+		}
+		senao se(operacao == 2){
+			credito()
+		}
+	}
+	//funcao para debito
+	funcao debito(){
+		faca{
+		escreva("Valor a ser debitado : R$ ")
+		leia(valorMovimentado)
+		saldo = saldo - valorMovimentado
+
+		escreva("Deseja fazer outro débito? [S/N] : ")
+		leia(voltar)
 
 		limpa()
-
-		se(conta == 1){
-			cabecalho()
-			escreva("\nCONTA POUPANÇA\n")
-			escreva("")
 		}
-		senao se(conta == 2){
-			cabecalho()
-			escreva("\nCONTA CORRENTE\n")
-			escreva("")
-		}
-		senao se(conta == 3){
-			cabecalho()
-			escreva("\nCONTA ESPECIAL\n")
-			escreva("")
-		}
-		senao se(conta == 4) {
-			cabecalho()
-			escreva("\nCONTA EMPRESARIAL\n")
-			escreva("")
-		}
-		senao se(conta == 5){
-			cabecalho()
-			escreva("\nCONTA ESTUDANTIL\n")
-			escreva("")
-		}
-		senao se(conta == 6){
-			cabecalho()
-			escreva("\nSAIR\n")
-			escreva("")
-		}
-		
-
+		enquanto(voltar != 'N')
+			inicio()
 		
 	}
-	funcao cabecalho () {
-		escreva("BANCO G4\n")
-		escreva("Banco Honesto\n")
+
+	//funcao para credito
+	funcao credito(){
+		//faca{
+		escreva("Valor a ser creditado : R$ ")
+		leia(valorMovimentado)
+
+		saldo = saldo + valorMovimentado
+
+		faca{
+			escreva("Deseja continuar?  [S/N] : ")
+			leia(voltar)
+
+			limpa()
+
+			se(voltar == 's' ou voltar == 'S'){
+
+				debitoCredito()
+			}
+		}enquanto(voltar != 'n' e voltar != 'N')
+
+		//}
+		//enquanto(voltar != 'n' e voltar != 'N')
+		inicio()
+
 	}
-		
 	
+	//funcao para a exibição da segunda tela
+	funcao tela2(){
+		escreva(nomeBanco)
+		escreva(slogan)
+
+		escreva("\nCONTA " + tipoConta + "\n")
+		escreva("\nSaldo Atual: R$ " + saldo + " - Limite: R$ " + limiteEstudantil)
+		debitoCredito()
+	}
 }
+
 
 
 /* $$$ Portugol Studio $$$ 
@@ -62,7 +174,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 567; 
+ * @POSICAO-CURSOR = 2679; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
