@@ -1,2 +1,2 @@
 # project_bank
-Repositório criado para o Projeto de uma simulação de um banco
+Repositório criado para cumprir o desafio da simulação de um banco do bootcamp da Generation Brasil
