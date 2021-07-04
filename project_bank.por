@@ -4,6 +4,7 @@ programa
 	
 	caracter voltar
 	inteiro numeroConta, operacao 
+	real saldopo = 0
 	real saldo = 0.00, limiteEstudantil = 5000.00, total = saldo + limiteEstudantil, saque, deposito, diferenca
 	real valorMovimentado
 	cadeia nomeBanco = "BANCO G-4\n"
@@ -76,10 +77,29 @@ programa
 	}
 
 	//funcao conta poupança
-	funcao contaPoupanca(){
-		escreva("conta poupanca")
-	}
+	funcao contaPoupanca()
+		{
+			inteiro diaAniversarioPoupanca = 30, diaDehoje, movimento = 0, saldopo = 0
 
+			faca {
+				escreva("Que dia é hoje? ")
+				leia(diaDehoje)
+			se(diaDehoje == diaAniversarioPoupanca)
+			{
+				saldopo = (saldopo * 0.05) + saldopo
+				tela1()
+				
+			}
+			senao{
+				escreva("Que dia é hoje? ")
+				leia(diaDehoje)
+				tela1()
+				}
+			}
+			enquanto (movimento < 10)
+				
+				
+		}
 	//funcao conta corrente
 	funcao contaCorrente(){
 		escreva("conta corrente")
@@ -126,7 +146,7 @@ programa
 		limpa()
 		}
 		enquanto(voltar != 'N')
-			inicio()
+			tela1()
 		
 	}
 
@@ -152,11 +172,20 @@ programa
 
 		//}
 		//enquanto(voltar != 'n' e voltar != 'N')
-		inicio()
+		tela1()
 
 	}
 	
 	//funcao para a exibição da segunda tela
+		funcao tela1(){
+		escreva(nomeBanco)
+		escreva(slogan)
+		
+		escreva("\nCONTA " + tipoConta + "\n")
+		escreva("\nSaldo Atual: R$ " + saldopo)
+		debitoCredito()
+		}
+		
 	funcao tela2(){
 		escreva(nomeBanco)
 		escreva(slogan)
@@ -165,6 +194,8 @@ programa
 		escreva("\nSaldo Atual: R$ " + saldo + " - Limite: R$ " + limiteEstudantil)
 		debitoCredito()
 	}
+
+
 }
 
 
@@ -174,7 +205,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 2679; 
+ * @POSICAO-CURSOR = 1749; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
