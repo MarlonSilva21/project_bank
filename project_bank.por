@@ -101,7 +101,7 @@ programa
 	//funcao conta estudantil
 	funcao contaEstudantil(){
 		
-		tela2()
+		tela5()
 	}
 	
 	
@@ -171,7 +171,6 @@ programa
 			
 			//debitoCredito("","","",0)		
 			//tela2()	
-			debito()
 
 		}
 		senao{
@@ -201,7 +200,7 @@ programa
 	}
 	
 	//funcao para a exibição da segunda tela
-	funcao tela2(){
+	funcao tela5(){
 		escreva(nomeBanco)
 		escreva(slogan)
 
@@ -415,12 +414,11 @@ programa
 	
 				se(opcao2 == ' '){
 					limpa()
-					tela2()
+					tela5()
 				}
 			}
 			
-		}
-		senao{
+		}senao{
 			limpa()
 			escreva("********************************************************\n")
 			escreva("*                                                      *\n")
@@ -428,6 +426,7 @@ programa
 			escreva("*                                                      *\n")
 			escreva("********************************************************\n")
 			}
+		
 	 }			 
 }
 
@@ -440,8 +439,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 3278; 
- * @DOBRAMENTO-CODIGO = [225];
+ * @POSICAO-CURSOR = 9415; 
+ * @DOBRAMENTO-CODIGO = [224];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
