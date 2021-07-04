@@ -86,7 +86,7 @@ programa
 	//funcao conta corrente
 	funcao contaCorrente(){
 		
-		tela4()
+		tela2()
 		
 	}
 
@@ -103,7 +103,7 @@ programa
 	//funcao conta estudantil
 	funcao contaEstudantil(){
 		
-		tela2()
+		tela5()
 	}
 	
 	//funcao pra conferir se vai ser debito ou crédito
@@ -153,8 +153,8 @@ programa
 		limpa()
 	}
 	
-	//funcao para a exibição da segunda tela
-	funcao tela2(){
+	//funcao para a exibição da tela conta-estudantil
+	funcao tela5(){
 		escreva(nomeBanco)
 		escreva(slogan)
 
@@ -168,7 +168,7 @@ programa
 	
 	
 	//funcao para a exibição da tela conta-corrente
-	funcao tela4(){
+	funcao tela2(){
 
 		limpa()
 
@@ -286,7 +286,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 3932; 
+ * @POSICAO-CURSOR = 1801; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
