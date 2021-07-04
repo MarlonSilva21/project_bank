@@ -1,11 +1,13 @@
 programa
 {
+	inclua biblioteca Util
 
 	
-	caracter voltar
+	caracter voltar, opcao
 	inteiro numeroConta, operacao 
 	real saldo = 0.00, limiteEstudantil = 5000.00, total = saldo + limiteEstudantil, saque, deposito, diferenca
 	real valorMovimentado
+	real debitoCheque = 0.0
 	cadeia nomeBanco = "BANCO G-4\n"
 	cadeia slogan = "A ELITE DO BRASILEIRÃO\n"
 	cadeia tipoConta
@@ -161,6 +163,9 @@ programa
 		debitoCredito()
 		inicio()
 	}
+
+
+	
 	
 	//funcao para a exibição da tela conta-corrente
 	funcao tela4(){
@@ -176,9 +181,6 @@ programa
 
 		limpa()
 
-		caracter opcao
-		inteiro qtdCheque = 0, debitoCheque = 0
-
 		escreva(nomeBanco)
 		escreva(slogan)
 		
@@ -187,66 +189,93 @@ programa
 
 		escreva("\n\nDeseja adquirir talão de cheques? (Valor de R$30 por talão) [S/N]: ")
 		leia(opcao)
+
+		se(opcao == 's' ou opcao == 'S'){
+			desejaCheque()
+		}
+		senao se (opcao == 'n' ou opcao == 'N'){
+			inicio()
+		}
 		 
-		se(opcao != 's' ou opcao !='S' ou opcao != 'n' ou opcao !='N'){
+		senao {
 			enquanto(opcao != 's' e opcao !='S' e opcao != 'n' e opcao !='N'){ 	
 		 		limpa()
 		 		escreva("Saldo Atual: R$ " + saldo)
-		 		escreva("Opção inválida\n")
+		 		escreva("\nOpção inválida!")
 		 		escreva("\n\nDeseja adquirir talão de cheques? (Valor de R$30 por talão) [S/N]: ")
 				leia(opcao)
+				se(opcao == 's' ou opcao =='S'){
+					desejaCheque()
+				}
+				senao{
+					escreva("Operação cancelada!")
+					Util.aguarde(5000)
+					inicio()
+				}
 			}
-		} 
-		 
-		 senao se(opcao == 's' ou opcao =='S'){
-		 	escreva("Quantos talões? (Limitado a 3): ")	 	
-		 	leia(qtdCheque)
+		}   		 
+	}
 
-		 	se (qtdCheque < 1 ou qtdCheque > 3){
-		 		enquanto (qtdCheque < 1 ou qtdCheque > 3){
-		 			limpa()
+	funcao desejaCheque(){
+
+		inteiro qtdCheque = 0
+		
+		escreva("Quantos talões? (Limitado a 3): ")	 	
+		leia(qtdCheque)
+
+		se (qtdCheque < 1 ou qtdCheque > 3){
+			enquanto (qtdCheque < 1 ou qtdCheque > 3){
+		 		limpa()
 		 			
-		 			escreva("Quantidade inválida!\n")
-		 			escreva("Escolha de 1 a 3 talões: ")
-		 			leia(qtdCheque)
-		 		}
+		 		escreva("Quantidade inválida!\n")
+		 		escreva("Escolha de 1 a 3 talões: ")
+		 		leia(qtdCheque)
 		 	}
+		 }
 		 
-		 
-		 
-		   	debitoCheque = qtdCheque * 30
+		 debitoCheque = qtdCheque * 30
 
-		 	se(saldo - debitoCheque < 0){
-		 		enquanto(saldo - debitoCheque < 0){
-		 			limpa()
-		 			escreva("Saldo em conta insuficiente para essa quantidade!\n")
-		 			escreva("Quantos talões você deseja comprar? (Saldo em conta R$", saldo, "): ")
-		 			leia(qtdCheque)
+		 se(saldo - debitoCheque < 0){
+		 	enquanto(saldo - debitoCheque < 0){
+		 		limpa()
+		 		escreva("Saldo em conta insuficiente para essa quantidade!\n")
+		 		escreva("\nSaldo: R$ ", saldo)
+		 		escreva("\nQuantos talões você deseja comprar? (Valor de R$30 por talão): ")
+		 		leia(qtdCheque)
 		 
-		   			debitoCheque = qtdCheque * 30
-		 		}
-		 	}
+		   		debitoCheque = qtdCheque * 30
+			}
+		}
 
-		   	limpa ()
+		limpa ()
 		   	
-		  	escreva("Quantidade de talões solicitados = ", qtdCheque)
-		  	escreva("\nValor que será debitado da conta = R$ ", debitoCheque)
-		  	escreva("\nSaldo após confirmação = R$ ", saldo - debitoCheque)
-		  	escreva("\n\nConfirma? [S/N] ")
-		  	leia(opcao)
-		  	
-		  	se (opcao == 's' ou opcao == 'S'){
-		  	   	    saldo -= debitoCheque
-		 	}
+		faca{	
+			escreva("Quantidade de talões solicitados = ", qtdCheque)
+			escreva("\nValor que será debitado da conta = R$ ", debitoCheque)
+			escreva("\nSaldo após confirmação = R$ ", saldo - debitoCheque)
+			escreva("\n\nConfirma? [S/N] ")
+			leia(opcao)
+			se(opcao != 's' e opcao !='S' e opcao != 'n' e opcao !='N'){
 
-		  }
-		  senao{
-			inicio()
-		  }
-		  
-		 
-		 }	
-			 
+				limpa()
+				escreva("Opção Inválida!\n\n")
+			}
+		} enquanto (opcao != 's' e opcao !='S' e opcao != 'n' e opcao !='N')
+			  	
+			se (opcao == 's' ou opcao == 'S'){
+				saldo -= debitoCheque
+				escreva("Operação concluída!")
+				Util.aguarde(5000)
+				inicio()
+				
+			}
+			senao se (opcao == 'n' ou opcao == 'N'){
+				escreva("Operação cancelada!")
+				Util.aguarde(5000)
+				inicio()
+			}
+		
+	}
 }
 
 
@@ -257,8 +286,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 3469; 
- * @DOBRAMENTO-CODIGO = [43];
+ * @POSICAO-CURSOR = 3932; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
