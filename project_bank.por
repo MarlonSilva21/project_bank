@@ -112,8 +112,9 @@ programa
 
 		para(condicaoDebitoCredito ; condicaoDebitoCredito > 0; condicaoDebitoCredito--){
 
+			faca{
 			escreva("\n\nTransações restantes: "+ condicaoDebitoCredito)
-
+			
 			escreva("\n\n*************"+y+"***************\n")
 			escreva("|1 - Saque | 2 - Depósito | " + x)
 			escreva("\n**************"+z+"**************\n")
@@ -121,6 +122,13 @@ programa
 			
 			escreva("\n\nDigite a opção escolhida: ")
 			leia(operacao)
+
+			se (operacao != 1 e operacao != 2 e operacao != limite){
+				limpa()
+				escreva("Opção Inválida")
+		 	}
+			
+			}enquanto (operacao != 1 e operacao != 2 e operacao != limite)
 
 			se(operacao == 1){
 				debito()
@@ -467,8 +475,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 6573; 
- * @DOBRAMENTO-CODIGO = [13, 21, 39, 92, 97, 102, 178, 205, 336];
+ * @POSICAO-CURSOR = 2430; 
+ * @DOBRAMENTO-CODIGO = [13, 21, 39, 92, 97, 102, 186, 213, 344];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
