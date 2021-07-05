@@ -112,7 +112,7 @@ programa
 
 		para(condicaoDebitoCredito ; condicaoDebitoCredito > 0; condicaoDebitoCredito--){
 
-			escreva("\n\nTransações restante: "+ condicaoDebitoCredito)
+			escreva("\n\nTransações restantes: "+ condicaoDebitoCredito)
 
 			escreva("\n\n*************"+y+"***************\n")
 			escreva("|1 - Saque | 2 - Depósito | " + x)
@@ -321,8 +321,9 @@ programa
 			se (opcao == 's' ou opcao == 'S'){
 				saldo -= debitoCheque
 				escreva("Operação concluída!\n")
+				Util.aguarde(5000)	
 				fim()
-				Util.aguarde(5000)				
+		
 			}
 			
 			senao se (opcao == 'n' ou opcao == 'N'){
@@ -466,8 +467,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 5384; 
- * @DOBRAMENTO-CODIGO = [13, 21, 39, 92, 97, 102, 178, 205, 335];
+ * @POSICAO-CURSOR = 6573; 
+ * @DOBRAMENTO-CODIGO = [13, 21, 39, 92, 97, 102, 178, 205, 336];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
