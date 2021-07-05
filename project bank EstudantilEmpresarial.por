@@ -6,6 +6,8 @@ programa
 	caracter voltar, continua = 's', sair = 'n', operacao
 
 	inteiro numeroConta, /*operacao,*/ condicaoDebitoCredito = 10, opcao
+	inteiro cont = 0
+	inteiro i = 0
 	real saldo = 0.00, limiteEE = 0.0,  limite = 1000.00, sacado = 0.0, depositado= 0.0, diferenca = 0.0
 	real valorMovimentado
 	cadeia nomeBanco = "BANCO G-4\n"
@@ -109,7 +111,6 @@ programa
 	funcao debitoCredito(){
 
 		caracter opcaoSN
-		inteiro cont = 0
 		faca{
 
 			
@@ -120,10 +121,10 @@ programa
 			escreva("Saldo Atual: R$ ",saldo)
 		
 			escreva("\n\n**************************************************************\n")
-			escreva("1 - Saque ")
-			escreva("| 2 - Depósito ")
-			escreva("| 3 - Limite ")
-			escreva("| 4 - Sair ")
+			escreva(" 1- Saque ")
+			escreva("|2 - Depósito ")
+			escreva("|3 - Limite ")
+			escreva("|4 - Sair ")
 			escreva("\n**************************************************************\n")
 	
 			escreva("\n\nQual  transação você deseja fazer: ")
@@ -223,11 +224,12 @@ programa
 		escreva("\nSaldo Atual: R$ " + saldo + " - Limite: R$ " + limiteEE)
 
 		
-		debitoCredito()	
+		debitoCreditoEE()	
 
 	}
 	funcao tela4(){
 		limiteEE = 10000.00
+		caracter desejaUsarLimite, desejaContinuar
 		
 		caracter opcao1
 		
@@ -248,8 +250,8 @@ programa
 		escreva("\nSaldo Atual: R$ " + saldo + " - Limite: R$ " + limiteEE)
 
 		
-		debitoCredito()	
-
+		debitoCreditoEE()
+			
 	}
 
 	funcao tela2(){
@@ -459,140 +461,233 @@ programa
 	//-----------------------------------------------------------------------------------
 
 	funcao limiteE(){
-		
-		caracter opcao, opcao2, opcao3 = 's', opcao4
-		 
-			se(condicaoDebitoCredito <= 0){
-			escreva("\n\nVocê atingiu o limite de 10 transações diárias!!!!")
-			escreva("\nDeseja fazer uso do Limite especial de " + limiteEE + "? [S/N]: ")   
-			leia(opcao)
-		}
-		senao{
-			escreva("\nDeseja fazer uso do Limite especial de " + limiteEE + "? [S/N]: ")   
-			leia(opcao)
-		}
-		 
-		se(opcao == 's' ou opcao == 'S'){
-			faca{
+		caracter desejaUsarLimite, desejaContinuar
 
-				escreva("Insira o valor desejado: R$ " )
-				leia(valorMovimentado)
+		escreva("Deseja ultilizar seu limite especial? [S/N]")
+		leia(desejaUsarLimite)
 
-				se(valorMovimentado > limiteEE){
-					faca{
-						limpa()
-						escreva("Você não tem esse valor de limite disponínel!!!")
-						escreva("\n\nLimite disponível : " + limiteEE)
-
-						escreva("\nQuer tentar novamente? [S/N]: ")
-						leia(opcao4)
-
-						se(opcao4 == 's' ou opcao4 == 'S'){
-							escreva("Insira o valor desejado: R$ " )
-							leia(valorMovimentado)
-						}
-						senao se(opcao4 == 'n' ou opcao4 == 'N'){
-							limpa()
-							debitoCredito()
-							
-						}
-
-					}enquanto(valorMovimentado > limiteEE)
-				}
-
-				senao {
-				limiteEE -= valorMovimentado
-				saldo += valorMovimentado
-	
-				limpa()
-
-				se(limiteEE == 0){
-					escreva("\n\nVocê usou todo o limite disponível!")
-					pare
-				}
-				
-				escreva("O valor de " + valorMovimentado + " foi remanejado do limite especial para o seu saldo! \nBoas compras!!\n")
-				}
-	
-				escreva("\nSaldo atual: R$ "+ saldo)
-				escreva("\nLimite Disponível: R$ " + limiteEE)
-
-				escreva("\n\nVocê ainda tem limite disponível!")
-				escreva("\n\nDeseja continuar? [S/N] : ")
-				leia(opcao3)
-
-				se(opcao3 == 'n' ou opcao3 == 'N'){
-					limpa()
-					pare
-					
-				}
-				
-				
-			}enquanto(limiteEE > 0 )
-			
-			escreva("\n\nPressione a tecla SPACE e ENTER para voltar ao menu")
-			leia(opcao2)
-
-			se(opcao2 == ' '){
-				limpa()
+		se(desejaUsarLimite == 's' ou desejaUsarLimite == 'S'){
+			escreva("Valor movimentado: ")
+			leia(valorMovimentado)
+			se(valorMovimentado <= 0.0){
+				escreva("\n\nValor requerido inválido\nLimite especial: ",limiteEE,"\n\n")
 				debitoCredito()
 			}
-			
-		}
-		senao se(opcao != 'n' e opcao !='N'){
-			enquanto(opcao != 's' e opcao !='S' e opcao != 'n' e opcao !='N'){ 	
-		 		limpa()
-		 		escreva("Saldo Atual: R$ " + saldo)
-		 		escreva("\n\nOpção inválida tente novamente!!!\n")
-		 		escreva("\n\nDeseja fazer uso do Limite especial de R$ " + limiteEE + "? [S/N]: ")
-				leia(opcao)
+			senao se(valorMovimentado > limiteEE){
+				escreva("\n\nOperação indisponível\nLimite especial: ",limiteEE,"\n\n")
+				debitoCredito()
 			}
-			
-			se(opcao == 's' ou opcao == 'S'){
-				escreva("Insira o valor desejado: R$ " )
-				leia(valorMovimentado)
-	
-				limiteEE -= valorMovimentado
-				saldo += valorMovimentado
-	
+			senao se(valorMovimentado <= limiteEE){
+				saldo+=valorMovimentado
+				limiteEE-=valorMovimentado
+
 				limpa()
 	
-				escreva("O valor de " + valorMovimentado + " foi remanejado do limite especial para o seu saldo! \nBoas compras!!\n")
+				escreva("O valor de ", valorMovimentado, " foi remanejado do limite especial para o seu saldo! \nBoas compras.\n")
 	
-				escreva("\nSaldo atual: R$ "+ saldo)
-				escreva("\nLimite Disponível: R$ " + limiteEE)
-	
-				escreva("\n\nPressione a tecla SPACE e ENTER para voltar ao menu")
-				leia(opcao2)
-	
-				se(opcao2 == ' '){
-					limpa()
-					debitoCredito()
-				}
+				escreva("\nSaldo atual: R$ ", saldo)
+				escreva("\nLimite Disponível: R$ ", limiteEE,"\n\n")
 			}
 			
 		}
-		senao{
-			limpa()
-			escreva("********************************************************\n")
-			escreva("*                                                      *\n")
-			escreva("*  Obrigado por usar nossos serviços, volte sempre :)  *\n")
-			escreva("*                                                      *\n")
-			escreva("********************************************************\n")
-			}
+		senao se (desejaUsarLimite != 's' ou desejaUsarLimite != 'S' ou desejaUsarLimite != 'n' ou desejaUsarLimite != 'N'){
+			escreva("\n\n==============.\n")
+			escreva("Opção inválida.\n")
+			escreva("==============.\n\n")
+			debitoCredito()
+		}
 	}
 
 	funcao fim(){
 		escreva("FIM DE PROGRAMA")
 	}
+	funcao debitoCreditoEE(){
+
+		caracter opcaoSN
+		
+		faca{
+
+			
+
+			escreva(nomeBanco)
+			escreva(slogan)
+			escreva("\n")
+			escreva("Saldo Atual: R$ ",saldo)
+		
+			escreva("\n\n**************************************************************\n")
+			escreva(" 1- Saque ")
+			escreva("|2 - Depósito ")
+			escreva("|3 - Limite ")
+			escreva("|4 - Sair ")
+			escreva("\n**************************************************************\n")
 	
+			escreva("\n\nQual  transação você deseja fazer: ")
+			leia(opcao)
+	
+			se(opcao == 4){
+				fim()
+				pare
+			}
+
+			senao se(opcao == 3){
+				limiteE()
+			}
+			
+			// deposito 
+			senao se(opcao == 2){
+				escreva("Insira o valor para depósito: ")
+				leia(valorMovimentado)
+
+
+				se(valorMovimentado > 0){
+					saldo += valorMovimentado
+					limpa()
+					escreva("\nTransação concluída com sucesso!!\n")
+
+					Util.aguarde(1500)
+				}
+				
+
+				se(valorMovimentado <= 0 ) {
+
+					limpa()
+					escreva("\n       **********************          ")
+					escreva("\n          VALOR INCORRETO !\n")
+					escreva("       **********************        \n")
+
+					escreva("\n\n        TENTE NOVAMENTE !!! ")
+					Util.aguarde(1500)
+
+					debitoCredito()				     
+				}
+			}
+			// SAQUE
+			senao se(opcao == 1){
+				
+				escreva("Insira o valor para saque: ")
+				leia(valorMovimentado)
+
+				caracter opcao1
+
+		
+
+				se(valorMovimentado > saldo){
+				limpa()
+				escreva("\nSaldo insuficiente.\n")
+
+				Util.aguarde(1500)
+
+				debitoCredito()
+			
+			
+				}
+				senao{
+	
+				saldo -= valorMovimentado
+				limpa()
+				escreva("\nSaque efetuado com sucesso!")
+				Util.aguarde(1500)
+				}
+				
+				
+			}
+			cont++
+			se(cont==10){
+				escreva("\n\nLimite de transações diárias excedido.\n\n")
+				caracter desejaUsarLimite, desejaContinuar
+
+				escreva("Deseja ultilizar seu limite especial? [S/N]")
+				leia(desejaUsarLimite)
+		
+				se(desejaUsarLimite == 's' ou desejaUsarLimite == 'S'){
+					escreva("Valor movimentado: ")
+					leia(valorMovimentado)
+					se(valorMovimentado <= 0.0){
+						escreva("\n\nValor requerido inválido\nLimite especial: ",limiteEE,"\n\n")
+						limiteE()
+					}
+					senao se(valorMovimentado > limiteEE){
+						escreva("\n\nOperação indisponível\nLimite especial: ",limiteEE,"\n\n")
+						limiteE()
+					}
+					senao se(valorMovimentado <= limiteEE){
+						saldo+=valorMovimentado
+						limiteEE-=valorMovimentado
+		
+						limpa()
+			
+						escreva("O valor de ", valorMovimentado, " foi remanejado do limite especial para o seu saldo! \nBoas compras.\n")
+			
+						escreva("\nSaldo atual: R$ ", saldo)
+						escreva("\nLimite Disponível: R$ ", limiteEE,"\n\n")
+					}
+					
+				}
+				senao se(desejaUsarLimite == 'n' ou desejaUsarLimite == 'N'){
+					limpa()
+					escreva("\nOBRIGADO POR USAR NOSSOS SERVIÇOS.\n")
+					Util.aguarde(1500)
+					pare
+				}
+				senao se (desejaUsarLimite != 's' ou desejaUsarLimite != 'S' ou desejaUsarLimite != 'n' ou desejaUsarLimite != 'N'){
+					faca{
+					escreva("\n\n==============.\n")
+					escreva("Opção inválida.\n")
+					escreva("==============.\n\n")
+
+					escreva("Deseja ultilizar seu limite especial? [S/N]")
+					leia(desejaUsarLimite)
+						se(desejaUsarLimite == 's' ou desejaUsarLimite == 'S'){
+							escreva("Valor movimentado: ")
+							leia(valorMovimentado)
+							se(valorMovimentado <= 0.0){
+								escreva("\n\nValor requerido inválido\nLimite especial: ",limiteEE,"\n\n")
+								
+							}
+							senao se(valorMovimentado > limiteEE){
+								escreva("\n\nOperação indisponível\nLimite especial: ",limiteEE,"\n\n")
+								
+							}
+							senao se(valorMovimentado <= limiteEE){
+								saldo+=valorMovimentado
+								limiteEE-=valorMovimentado
+				
+								limpa()
+					
+								escreva("O valor de ", valorMovimentado, " foi remanejado do limite especial para o seu saldo! \nBoas compras.\n")
+					
+								escreva("\nSaldo atual: R$ ", saldo)
+								escreva("\nLimite Disponível: R$ ", limiteEE,"\n\n")
+
+
+							}
+							fim()
+							pare
+						}
+						senao se(desejaUsarLimite == 'n' ou desejaUsarLimite == 'N'){
+							limpa()
+							fim()
+							pare
+						}
+					
+					
+					i++
+					}enquanto(i <10)
+				}
+				
+					}
+		
+		}enquanto(cont<3 e opcao != 4)
+		
+	}
 }
+
 /* $$$ Portugol Studio $$$ 
  * 
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 288; 
+ * @POSICAO-CURSOR = 4382; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
