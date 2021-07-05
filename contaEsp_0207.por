@@ -42,12 +42,15 @@ programa
 				leia(sacado)
 				limpa()
 					
-				
-				se (sacado > (limite+saldo)){
+				se (sacado <=0  ){
+					escreva("Não é um valor válido para operação!")
+				}
+				senao se (sacado > (limite+saldo)){
 					escreva("Não há saldo nem limite suficiente para essa operação!")
 				}
+				
 
-				se(sacado > saldo e sacado <(saldo+limite)){
+				senao se(sacado > saldo e sacado <(saldo+limite)){
 					diferenca = sacado - saldo
 					saldo = 0.0
 					limite = limite - diferenca 
@@ -72,6 +75,12 @@ programa
 				leia(depositado)
 				limpa()
 				saldo = saldo + depositado
+
+				se (depositado <=0  ){
+					escreva("Não é um valor válido para operação!")
+				}
+
+				
 			}					
 				escreva("\n")
 				escreva ("\nSeu saldo atual é:...........R$ ",saldo)
@@ -88,7 +97,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 192; 
+ * @POSICAO-CURSOR = 435; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
