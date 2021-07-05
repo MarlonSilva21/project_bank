@@ -7,7 +7,6 @@ programa
 
 	inteiro numeroConta, /*operacao,*/ condicaoDebitoCredito = 10, opcao
 	real saldo = 0.00, limiteEE = 0.0,  limite = 1000.00, sacado = 0.0, depositado= 0.0, diferenca = 0.0
-	//real limiteEmpresarial = 10000.00
 	real valorMovimentado
 	cadeia nomeBanco = "BANCO G-4\n"
 	cadeia slogan = "A ELITE DO BRASILEIRÃO\n"
@@ -150,7 +149,7 @@ programa
 					limpa()
 					escreva("\nTransação concluída com sucesso!!\n")
 
-					Util.aguarde(3000)
+					Util.aguarde(1500)
 				}
 				
 
@@ -162,7 +161,7 @@ programa
 					escreva("       **********************        \n")
 
 					escreva("\n\n        TENTE NOVAMENTE !!! ")
-					Util.aguarde(5000)
+					Util.aguarde(1500)
 
 					debitoCredito()				     
 				}
@@ -181,7 +180,7 @@ programa
 				limpa()
 				escreva("\nSaldo insuficiente.\n")
 
-				Util.aguarde(3000)
+				Util.aguarde(1500)
 
 				debitoCredito()
 			
@@ -192,7 +191,7 @@ programa
 				saldo -= valorMovimentado
 				limpa()
 				escreva("\nSaque efetuado com sucesso!")
-				Util.aguarde(3000)
+				Util.aguarde(1500)
 				}
 				
 				
@@ -348,14 +347,14 @@ programa
 			se (opcao1 == 's' ou opcao1 == 'S'){
 				saldo -= debitoCheque
 				escreva("Operação concluída!\n")
-				Util.aguarde(5000)	
+				Util.aguarde(1500)	
 				fim()
 		
 			}
 			
 			senao se (opcao1 == 'n' ou opcao1 == 'N'){
 				escreva("Operação cancelada!")
-				Util.aguarde(5000)
+				Util.aguarde(1500)
 				fim()
 			}
 		
@@ -401,7 +400,7 @@ programa
 				se(sacado <= 0 ){
 					enquanto (sacado <= 0  ){
 						escreva("Não é um valor válido para operação!")
-						Util.aguarde(3000)
+						Util.aguarde(1500)
 						limpa()
 						pare
 
@@ -409,7 +408,7 @@ programa
 				}
 				se (sacado > (limite+saldo)){
 					escreva("Não há saldo nem limite suficiente para essa operação!")
-					Util.aguarde(3000)
+					Util.aguarde(1500)
 					limpa()
 				}
 				
@@ -460,17 +459,7 @@ programa
 	//-----------------------------------------------------------------------------------
 
 	funcao limiteE(){
-		/*caracter opcao1, opcao2, opcao3		
-
-		escreva("\nLimite disponível: ", limiteEE,"\nUltilizar Limite Especial? Limite disponível [S/N]: ")
-		leia(opcao1)
-
-		se(opcao1 == 'n' ou opcao1 =='N'){
-			debitoCredito()
-		}
-		senao se(opcao1 == 's' ou opcao1 == 'S'){
-			
-		}*/
+		
 		caracter opcao, opcao2, opcao3 = 's', opcao4
 		 
 			se(condicaoDebitoCredito <= 0){
@@ -603,7 +592,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 8592; 
+ * @POSICAO-CURSOR = 288; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
