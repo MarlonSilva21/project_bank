@@ -490,6 +490,10 @@ programa
 			}
 			
 		}
+		senao se(desejaUsarLimite == 'n' ou desejaUsarLimite == 'N'){
+			limpa()
+			debitoCredito()
+		}
 		senao se (desejaUsarLimite != 's' ou desejaUsarLimite != 'S' ou desejaUsarLimite != 'n' ou desejaUsarLimite != 'N'){
 			escreva("\n\n==============.\n")
 			escreva("Opção inválida.\n")
@@ -687,7 +691,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 4382; 
+ * @POSICAO-CURSOR = 9586; 
+ * @DOBRAMENTO-CODIGO = [299, 365];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
